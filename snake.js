@@ -53,13 +53,12 @@ class Snake {
 }
 
 class Food {
-  constructor(colId, rowId) {
-    this.colId = colId;
-    this.rowId = rowId;
+  constructor(location) {
+    this.location = location;
   }
 
   get position() {
-    return [this.colId, this.rowId].slice();
+    return this.location.slice();
   }
 }
 
@@ -122,10 +121,19 @@ const mobilzeSnake = function(snake) {
   }, 200);
 };
 
-const drawFood = function (food) {
+const drawFood = function(food) {
   const [colId, rowId] = food.position;
   const cell = getCell(colId, rowId);
   cell.classList.add('food');
+};
+
+const getRandomPosition = function(colId, rowId) {
+  const randomColId = Math.random() * colId + 1;
+  const randomRowId = Math.random() * rowId + 1;
+  const randomPosition = [randomColId, randomRowId].map(id => {
+    return Math.round(id);
+  });
+  return randomPosition;
 };
 
 const main = function() {
@@ -149,7 +157,8 @@ const main = function() {
     'ghost'
   );
 
-  const food = new Food(3, 3);
+  const foodPosition = getRandomPosition(NUM_OF_COLS, NUM_OF_ROWS);
+  const food = new Food(foodPosition);
 
   attachEventListeners(snake);
   createGrids();
