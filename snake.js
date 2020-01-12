@@ -106,6 +106,12 @@ const attachEventListeners = snake => {
   document.body.onkeydown = handleKeyPress.bind(null, snake);
 };
 
+const mobilzeSnake = function(snake) {
+  setInterval(() => {
+    moveAndDrawSnake(snake);
+  }, 200);
+};
+
 const main = function() {
   const snake = new Snake(
     [
@@ -132,10 +138,8 @@ const main = function() {
   drawSnake(snake);
   drawSnake(ghostSnake);
 
-  setInterval(() => {
-    moveAndDrawSnake(snake);
-    moveAndDrawSnake(ghostSnake);
-  }, 200);
+  mobilzeSnake(snake);
+  mobilzeSnake(ghostSnake);
 
   setInterval(() => {
     let x = Math.random() * 100;
