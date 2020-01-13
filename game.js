@@ -2,8 +2,8 @@ const arePositionsEqual = (position1, position2) =>
   position1.every((id, index) => id === position2[index]);
 
 const getRandomPosition = function() {
-  const randomColId = Math.random() * 100 + 1;
-  const randomRowId = Math.random() * 60 + 1;
+  const randomColId = Math.random() * 99 + 1;
+  const randomRowId = Math.random() * 59 + 1;
   const randomPosition = [randomColId, randomRowId].map(id => {
     return Math.round(id);
   });
