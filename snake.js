@@ -19,11 +19,23 @@ class Snake {
       location: this.location,
       species: this.species,
       previousTail: this.previousTail
-    }
+    };
   }
 
   turnLeft() {
     this.direction.turnLeft();
+  }
+
+  turnRight() {
+    this.direction.turnRight();
+  }
+
+  turnUp() {
+    this.direction.turnUp();
+  }
+
+  turnDown() {
+    this.direction.turnDown();
   }
 
   move() {
@@ -36,6 +48,6 @@ class Snake {
   }
 
   grow() {
-    this.positions.unshift(this.previousTail)
+    this.positions.unshift(this.previousTail);
   }
 }

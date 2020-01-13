@@ -18,6 +18,26 @@ class Direction {
   }
 
   turnLeft() {
-    this.heading = (this.heading + 1) % 4;
+    if (this.heading == NORTH || this.heading == SOUTH) {
+      this.heading = WEST;
+    }
+  }
+
+  turnRight() {
+    if (this.heading == NORTH || this.heading == SOUTH) {
+      this.heading = EAST;
+    }
+  }
+
+  turnUp() {
+    if (this.heading == EAST || this.heading == WEST) {
+      this.heading = NORTH;
+    }
+  }
+
+  turnDown() {
+    if (this.heading == EAST || this.heading == WEST) {
+      this.heading = SOUTH;
+    }
   }
 }

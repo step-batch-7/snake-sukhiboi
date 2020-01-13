@@ -40,7 +40,20 @@ const drawSnake = function(snakeStatus) {
 };
 
 const handleKeyPress = snake => {
-  snake.turnLeft();
+  const key = event.key;
+  switch (key) {
+    case 'ArrowUp':
+      snake.turnUp();
+      break;
+    case 'ArrowDown':
+      snake.turnDown();
+      break;
+    case 'ArrowLeft':
+      snake.turnLeft();
+      break;
+    case 'ArrowRight':
+      snake.turnRight();
+  }
 };
 
 const attachEventListeners = snake => {
