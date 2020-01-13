@@ -20,5 +20,6 @@
 --DONE-- * Allow snake to eat food when food becomes available
 --DONE-- * Seprated classes in their own files
 --DONE-- * Upon eating the food, snake should grow tall
+--DONE-- * Remove Ghost Snake
 * If snake touches itself or the walls, the game should be over
 * Add a scoring mechanism

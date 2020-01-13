@@ -1,17 +1,7 @@
 const gameLoop = function(game) {
   eraseFood(game.foodStatus.previousFoodLocation);
   drawSnake(game.snakeStatus);
-  drawSnake(game.ghostSnakeStatus);
   drawFood(game.foodStatus.location);
-};
-
-const randomlyMoveGhostSnake = function(ghostSnake) {
-  setInterval(() => {
-    let x = Math.random() * 100;
-    if (x > 50) {
-      ghostSnake.turnLeft();
-    }
-  }, 500);
 };
 
 const main = function() {
@@ -25,18 +15,8 @@ const main = function() {
     'snake'
   );
 
-  const ghostSnake = new Snake(
-    [
-      [40, 30],
-      [41, 30],
-      [42, 30]
-    ],
-    new Direction(SOUTH),
-    'ghost'
-  );
-
   const food = new Food(getRandomPosition());
-  const game = new Game(snake, ghostSnake, food);
+  const game = new Game(snake, food);
 
   attachEventListeners(snake);
   createGrids();
@@ -47,6 +27,4 @@ const main = function() {
     game.update();
     gameLoop(game);
   }, 200);
-
-  randomlyMoveGhostSnake(ghostSnake);
 };
