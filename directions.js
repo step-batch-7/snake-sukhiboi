@@ -7,10 +7,10 @@ class Direction {
   constructor(initialHeading) {
     this.heading = initialHeading;
     this.deltas = {};
-    this.deltas[EAST] = [1, 0];
-    this.deltas[WEST] = [-1, 0];
-    this.deltas[NORTH] = [0, -1];
-    this.deltas[SOUTH] = [0, 1];
+    this.deltas[EAST] = { deltaX: 1, deltaY: 0 };
+    this.deltas[WEST] = { deltaX: -1, deltaY: 0 };
+    this.deltas[NORTH] = { deltaX: 0, deltaY: -1 };
+    this.deltas[SOUTH] = { deltaX: 0, deltaY: 1 };
   }
 
   get delta() {

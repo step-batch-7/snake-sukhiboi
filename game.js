@@ -1,20 +1,21 @@
-const arePositionsEqual = (position1, position2) =>
-  position1.every((id, index) => id === position2[index]);
+const arePositionsEqual = (position1, position2) => {
+  return position1.x == position2.x && position1.y == position2.y
+};
 
 const getRandomPosition = function() {
-  const randomColId = Math.random() * 99 + 1;
-  const randomRowId = Math.random() * 59 + 1;
-  const randomPosition = [randomColId, randomRowId].map(id => {
-    return Math.round(id);
-  });
-  return randomPosition;
+  const randomx = Math.random() * 99 + 1;
+  const randomy = Math.random() * 59 + 1;
+  return {
+    x: Math.round(randomx),
+    y: Math.round(randomy)
+  };
 };
 
 class Game {
   constructor(snake, food) {
     this.snake = snake;
     this.food = food;
-    this.previousFood = new Food([0, 0]);
+    this.previousFood = new Food({ x: 0, y:0});
     this.gameOver = false;
   }
 

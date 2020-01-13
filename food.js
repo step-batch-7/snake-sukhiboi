@@ -4,6 +4,9 @@ class Food {
   }
 
   get position() {
-    return this.location.slice();
+    return {
+      x: this.location.x,
+      y: this.location.y
+    };
   }
 }

@@ -3,7 +3,7 @@ class Snake {
     this.positions = positions.slice();
     this.direction = direction;
     this.type = type;
-    this.previousTail = [0, 0];
+    this.previousTail = { x: 0, y: 0 };
   }
 
   get location() {
@@ -45,12 +45,12 @@ class Snake {
   }
 
   move() {
-    const [headX, headY] = this.positions[this.positions.length - 1];
+    const { x, y } = this.positions[this.positions.length - 1];
     this.previousTail = this.positions.shift();
 
-    const [deltaX, deltaY] = this.direction.delta;
+    const { deltaX, deltaY } = this.direction.delta;
 
-    this.positions.push([headX + deltaX, headY + deltaY]);
+    this.positions.push({ x: x + deltaX, y: y + deltaY });
   }
 
   grow() {

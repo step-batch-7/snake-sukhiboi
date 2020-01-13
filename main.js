@@ -4,12 +4,12 @@ const gameLoop = function(game) {
   drawFood(game.foodStatus.location);
 };
 
-const main = function() {
+const main = function () {
   const snake = new Snake(
     [
-      [40, 25],
-      [41, 25],
-      [42, 25]
+      { x: 40, y: 25 },
+      { x: 41, y: 25 },
+      { x: 42, y: 25 }
     ],
     new Direction(EAST),
     'snake'
