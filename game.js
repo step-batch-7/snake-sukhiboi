@@ -19,14 +19,11 @@ class Game {
     this.gameOver = false;
   }
 
-  get snakeStatus() {
-    return this.snake.status;
-  }
-
-  get foodStatus() {
+  get status() {
     return {
+      snakeStatus: this.snake.status,
       previousFoodLocation: this.previousFood.location,
-      location: this.food.location
+      foodLocation: this.food.location
     };
   }
 

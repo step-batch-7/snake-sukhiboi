@@ -1,10 +1,11 @@
 const gameLoop = function(game) {
-  eraseFood(game.foodStatus.previousFoodLocation);
-  drawSnake(game.snakeStatus);
-  drawFood(game.foodStatus.location);
+  const gameStatus = game.status;
+  eraseFood(gameStatus.previousFoodLocation);
+  drawSnake(gameStatus.snakeStatus);
+  drawFood(gameStatus.foodLocation);
 };
 
-const main = function () {
+const main = function() {
   const snake = new Snake(
     [
       { x: 40, y: 25 },
