@@ -15,6 +15,7 @@ class Game {
     this.snake = snake;
     this.food = food;
     this.previousFood = new Food([0, 0]);
+    this.gameOver = false;
   }
 
   get snakeStatus() {
@@ -28,23 +29,23 @@ class Game {
     };
   }
 
-  ifFoodEaten() {
+  get over() {
+    return this.gameOver;
+  }
+
+  update() {
+    this.snake.move();
     const snakeHeadPosition = this.snake.location[
       this.snake.location.length - 1
     ];
     if (arePositionsEqual(snakeHeadPosition, this.food.position)) {
       this.previousFood = this.food;
-      this.updateFood();
+      this.food = new Food(getRandomPosition());
       this.snake.grow();
+    }
+    if (this.snake.hasEatenItself) {
+      this.gameOver = true;
     }
   }
 
-  update() {
-    this.snake.move();
-    this.ifFoodEaten();
-  }
-
-  updateFood() {
-    this.food = new Food(getRandomPosition());
-  }
 }

@@ -22,6 +22,12 @@ class Snake {
     };
   }
 
+  get hasEatenItself() {
+    const snakeHeadPosition = this.location[this.location.length - 1];
+    const snakeBody = this.location.slice(0, -1);
+    return snakeBody.some(part => arePositionsEqual(snakeHeadPosition, part));
+  }
+
   turnLeft() {
     this.direction.turnLeft();
   }

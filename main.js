@@ -23,8 +23,11 @@ const main = function() {
 
   gameLoop(game);
 
-  setInterval(() => {
+  const gameInterval = setInterval(() => {
     game.update();
     gameLoop(game);
+    if (game.over) {
+      clearInterval(gameInterval);
+    }
   }, 50);
 };
