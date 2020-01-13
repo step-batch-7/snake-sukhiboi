@@ -26,9 +26,10 @@ const main = function() {
 
   const gameInterval = setInterval(() => {
     game.update();
-    gameLoop(game);
     if (game.over) {
       clearInterval(gameInterval);
+    } else {
+      gameLoop(game);
     }
   }, 50);
 };

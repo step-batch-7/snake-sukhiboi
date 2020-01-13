@@ -23,3 +23,5 @@
 --DONE-- * Remove Ghost Snake
 * If snake touches itself or the walls, the game should be over
 * Add a scoring mechanism
+* Position Class
+* Make snake with length and initial Position
