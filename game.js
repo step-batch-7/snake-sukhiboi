@@ -33,7 +33,7 @@ class Game {
     };
   }
 
-  checkIfFoodEaten() {
+  ifFoodEaten() {
     const snakeHeadPosition = this.snake.location[
       this.snake.location.length - 1
     ];
@@ -47,7 +47,7 @@ class Game {
   update() {
     this.snake.move();
     this.ghostSnake.move();
-    this.checkIfFoodEaten();
+    this.ifFoodEaten();
   }
 
   updateFood() {
