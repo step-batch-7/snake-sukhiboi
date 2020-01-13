@@ -26,5 +26,5 @@ const main = function() {
   setInterval(() => {
     game.update();
     gameLoop(game);
-  }, 200);
+  }, 50);
 };
