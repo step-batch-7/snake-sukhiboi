@@ -24,16 +24,16 @@ const main = function () {
 
   attachEventListeners(snake);
   createGrids();
-  drawSnake(game.snake);
-  drawSnake(game.ghostSnake);
-  drawFood(game.food);
+  drawSnake(game.snakeStatus);
+  drawSnake(game.ghostSnakeStatus);
+  drawFood(game.foodStatus.location);
 
   setInterval(() => {
     game.update();
-    eraseFood(game.previousFood);
-    drawSnake(game.snake);
-    drawSnake(game.ghostSnake);
-    drawFood(game.food);
+    eraseFood(game.foodStatus.previousFoodLocation);
+    drawSnake(game.snakeStatus);
+    drawSnake(game.ghostSnakeStatus);
+    drawFood(game.foodStatus.location);
   }, 200);
 
   setInterval(() => {

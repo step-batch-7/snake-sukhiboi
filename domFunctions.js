@@ -25,17 +25,17 @@ const createGrids = function() {
   }
 };
 
-const eraseTail = function(snake) {
-  let [colId, rowId] = snake.previousTail;
+const eraseTail = function(tail, species) {
+  let [colId, rowId] = tail;
   const cell = getCell(colId, rowId);
-  cell.classList.remove(snake.species);
+  cell.classList.remove(species);
 };
 
-const drawSnake = function(snake) {
-  eraseTail(snake);
-  snake.location.forEach(([colId, rowId]) => {
+const drawSnake = function(snakeStatus) {
+  eraseTail(snakeStatus.previousTail, snakeStatus.species);
+  snakeStatus.location.forEach(([colId, rowId]) => {
     const cell = getCell(colId, rowId);
-    cell.classList.add(snake.species);
+    cell.classList.add(snakeStatus.species);
   });
 };
 
@@ -47,14 +47,14 @@ const attachEventListeners = snake => {
   document.body.onkeydown = handleKeyPress.bind(null, snake);
 };
 
-const drawFood = function(food) {
-  const [colId, rowId] = food.position;
+const drawFood = function(foodLocation) {
+  const [colId, rowId] = foodLocation;
   const cell = getCell(colId, rowId);
   cell.classList.add('food');
 };
 
-const eraseFood = function(food) {
-  const [colId, rowId] = food.position;
+const eraseFood = function(foodLocation) {
+  const [colId, rowId] = foodLocation;
   const cell = getCell(colId, rowId);
   cell.classList.remove('food');
 };

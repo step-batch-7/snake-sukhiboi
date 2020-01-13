@@ -14,6 +14,14 @@ class Snake {
     return this.type;
   }
 
+  get status() {
+    return {
+      location: this.location,
+      species: this.species,
+      previousTail: this.previousTail
+    }
+  }
+
   turnLeft() {
     this.direction.turnLeft();
   }

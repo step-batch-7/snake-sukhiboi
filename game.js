@@ -10,13 +10,27 @@ const getRandomPosition = function() {
   return randomPosition;
 };
 
-
 class Game {
   constructor(snake, ghostSnake, food) {
     this.snake = snake;
     this.ghostSnake = ghostSnake;
     this.food = food;
     this.previousFood = new Food([0, 0]);
+  }
+
+  get snakeStatus() {
+    return this.snake.status;
+  }
+
+  get ghostSnakeStatus() {
+    return this.ghostSnake.status;
+  }
+
+  get foodStatus() {
+    return {
+      previousFoodLocation: this.previousFood.location,
+      location: this.food.location
+    };
   }
 
   checkIfFoodEaten() {
