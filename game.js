@@ -40,6 +40,7 @@ class Game {
     if (arePositionsEqual(snakeHeadPosition, this.food.position)) {
       this.previousFood = this.food;
       this.updateFood();
+      this.snake.grow();
     }
   }
 
