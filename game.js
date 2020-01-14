@@ -21,27 +21,24 @@ class Game {
   update() {
     this.snake.move();
 
-    const snakeHeadPosition = this.snake.location[
-      this.snake.location.length - 1
-    ];
-
-    const snakeTouchesBoundary = function() {
+    const snakeTouchesBoundary = function(headLocation) {
       const topLeftPosition = new Position(0, 0);
       const bottomRigthPosition = new Position(
         NUM_OF_COLS - 1,
         NUM_OF_ROWS - 1
       );
-      return !snakeHeadPosition.liesBetween(
-        topLeftPosition,
-        bottomRigthPosition
-      );
+
+      return !headLocation.liesBetween(topLeftPosition, bottomRigthPosition);
     };
 
-    if (this.snake.hasEatenItself || snakeTouchesBoundary()) {
+    if (
+      this.snake.hasEatenItself ||
+      snakeTouchesBoundary(this.snake.headLocation)
+    ) {
       this.gameOver = true;
     }
 
-    if (snakeHeadPosition.isEqualTo(this.food.position)) {
+    if (this.snake.headLocation.isEqualTo(this.food.position)) {
       this.previousFood = this.food;
       this.food = new Food(Position.randomPosition());
       this.snake.grow();

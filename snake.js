@@ -22,6 +22,10 @@ class Snake {
     };
   }
 
+  get headLocation() {
+    return this.location[this.location.length - 1];
+  }
+
   get hasEatenItself() {
     const snakeHeadPosition = this.location[this.location.length - 1];
     const snakeBody = this.location.slice(0, -1);

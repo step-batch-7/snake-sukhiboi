@@ -5,9 +5,17 @@ const gameLoop = function(game) {
   drawFood(gameStatus.foodLocation);
 };
 
+const getSnakePositions = function(tailPosition, length) {
+  let snakePositions = new Array(length);
+  for (let idx = 0; idx < snakePositions.length; idx++) {
+    snakePositions[idx] = new Position(tailPosition.coords.x + idx, tailPosition.coords.y)
+  }
+  return snakePositions.slice();
+};
+
 const main = function() {
   const snake = new Snake(
-    [new Position(40, 25), new Position(41, 25), new Position(42, 25)],
+    getSnakePositions(new Position(40, 25), 4),
     new Direction(EAST),
     'snake'
   );
