@@ -41,5 +41,5 @@ const main = function() {
     } else {
       gameLoop(game);
     }
-  }, 50);
+  }, 100);
 };
