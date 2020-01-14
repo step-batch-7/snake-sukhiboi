@@ -24,5 +24,5 @@
 --DONE-- * If snake touches itself or the walls, the game should be over
 * Add a scoring mechanism
 --DONE-- * Position Class
-* Make snake with length and initial Position
-* Add sanke head property
+--DONE-- * Make snake with length and initial Position
+--DONE-- * Add sanke head property
