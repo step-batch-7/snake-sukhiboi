@@ -3,7 +3,7 @@ class Game {
     this.snake = snake;
     this.food = food;
     this.score = score;
-    this.previousFood = new Food(new Position(0, 0));
+    this.previousFood = new Food(new Position(0, 0), 10);
     this.gameOver = false;
   }
 
@@ -42,9 +42,9 @@ class Game {
 
     if (this.snake.headLocation.isEqualTo(this.food.position)) {
       this.previousFood = this.food;
-      this.food = new Food(Position.randomPosition());
+      this.food = new Food(Position.randomPosition(), 10);
       this.snake.grow();
-      this.score.incrementBy(10);
+      this.score.incrementBy(this.previousFood.points);
     }
   }
 }

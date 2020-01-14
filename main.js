@@ -3,13 +3,13 @@ const gameLoop = function(game) {
   eraseFood(gameStatus.previousFoodLocation);
   drawSnake(gameStatus.snakeStatus);
   drawFood(gameStatus.foodLocation);
-  drawScore(game.status.points)
+  drawScore(game.status.points);
 };
 
 const getSnakePositions = function(tailPosition, length) {
-  let snakePositions = new Array(length);
+  const snakePositions = new Array(length);
   for (let idx = 0; idx < snakePositions.length; idx++) {
-    snakePositions[idx] = new Position(tailPosition.coords.x + idx, tailPosition.coords.y)
+    snakePositions[idx] = new Position(tailPosition.coords.x + idx, tailPosition.coords.y);
   }
   return snakePositions.slice();
 };
@@ -21,7 +21,7 @@ const main = function() {
     'snake'
   );
 
-  const food = new Food(Position.randomPosition());
+  const food = new Food(Position.randomPosition(), 10);
   const score = new Score(0);
   const game = new Game(snake, food, score);
 
