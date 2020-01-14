@@ -25,8 +25,8 @@ class Position {
   }
 
   static randomPosition() {
-    const randomx = Math.random() * 99 + 1;
-    const randomy = Math.random() * 59 + 1;
+    const randomx = Math.random() * NUM_OF_COLS;
+    const randomy = Math.random() * NUM_OF_ROWS;
     return new Position(Math.round(randomx), Math.round(randomy));
   }
 
