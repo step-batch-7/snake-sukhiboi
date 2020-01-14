@@ -3,7 +3,7 @@ class Snake {
     this.positions = positions.slice();
     this.direction = direction;
     this.type = type;
-    this.previousTail = new Position(0,0);
+    this.previousTail = new Position(0, 0);
   }
 
   get location() {

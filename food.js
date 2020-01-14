@@ -7,7 +7,7 @@ class Food {
   get points() {
     return this.value;
   }
-  
+
   get position() {
     return new Position(this.location.x, this.location.y);
   }

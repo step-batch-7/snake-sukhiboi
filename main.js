@@ -9,7 +9,10 @@ const gameLoop = function(game) {
 const getSnakePositions = function(tailPosition, length) {
   const snakePositions = new Array(length);
   for (let idx = 0; idx < snakePositions.length; idx++) {
-    snakePositions[idx] = new Position(tailPosition.coords.x + idx, tailPosition.coords.y);
+    snakePositions[idx] = new Position(
+      tailPosition.coords.x + idx,
+      tailPosition.coords.y
+    );
   }
   return snakePositions.slice();
 };
