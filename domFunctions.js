@@ -34,8 +34,11 @@ const drawSnake = function(snakeStatus) {
   eraseTail(snakeStatus.previousTail, snakeStatus.species);
   snakeStatus.location.forEach(position => {
     const cell = getCell(position.coords);
+    cell.classList.remove('snakeHead')
     cell.classList.add(snakeStatus.species);
   });
+  const headCell = getCell(snakeStatus.headLocation.coords);
+  headCell.classList.add('snakeHead');
 };
 
 const handleKeyPress = snake => {
@@ -71,7 +74,7 @@ const eraseFood = function(foodLocation) {
 
 const drawScore = function(points) {
   const scoreBoard = document.getElementById('scoreboard');
-  scoreBoard.innerText = `Score: ${points}`;
+  scoreBoard.innerText = `${points}`.padStart(4,0);
 };
 
 const drawGameOverScreen = function(points) {

@@ -16,6 +16,7 @@ class Snake {
 
   get status() {
     return {
+      headLocation: this.headLocation,
       location: this.location,
       species: this.species,
       previousTail: this.previousTail
