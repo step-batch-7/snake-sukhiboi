@@ -17,19 +17,12 @@ class Game {
   }
 
   get over() {
-    return this.gameOver;
-  }
-
-  update() {
-    this.snake.move();
-
     const snakeTouchesBoundary = function(headLocation) {
       const topLeftPosition = new Position(0, 0);
       const bottomRigthPosition = new Position(
         NUM_OF_COLS - 1,
         NUM_OF_ROWS - 1
       );
-
       return !headLocation.liesBetween(topLeftPosition, bottomRigthPosition);
     };
 
@@ -39,7 +32,11 @@ class Game {
     ) {
       this.gameOver = true;
     }
+    return this.gameOver;
+  }
 
+  update() {
+    this.snake.move();
     if (this.snake.headLocation.isEqualTo(this.food.position)) {
       this.previousFood = this.food;
       this.food = new Food(Position.randomPosition(), 10);
