@@ -6,7 +6,7 @@ const GRID_ID = 'grid';
 const getGrid = () => document.getElementById(GRID_ID);
 const getCellId = (x, y) => x + '_' + y;
 
-const getCell = (x, y) => document.getElementById(getCellId(x, y));
+const getCell = (coords) => document.getElementById(getCellId(coords.x, coords.y));
 
 const createCell = function(grid, x, y) {
   const cell = document.createElement('div');
@@ -25,15 +25,14 @@ const createGrids = function() {
 };
 
 const eraseTail = function(tail, species) {
-  let { x, y } = tail;
-  const cell = getCell(x, y);
+  const cell = getCell(tail.coords);
   cell.classList.remove(species);
 };
 
 const drawSnake = function(snakeStatus) {
   eraseTail(snakeStatus.previousTail, snakeStatus.species);
-  snakeStatus.location.forEach(({ x, y }) => {
-    const cell = getCell(x, y);
+  snakeStatus.location.forEach((position) => {
+    const cell = getCell(position.coords);
     cell.classList.add(snakeStatus.species);
   });
 };
@@ -60,13 +59,11 @@ const attachEventListeners = snake => {
 };
 
 const drawFood = function(foodLocation) {
-  const { x, y } = foodLocation;
-  const cell = getCell(x, y);
+  const cell = getCell(foodLocation.coords);
   cell.classList.add('food');
 };
 
 const eraseFood = function(foodLocation) {
-  const { x, y } = foodLocation;
-  const cell = getCell(x, y);
+  const cell = getCell(foodLocation.coords);
   cell.classList.remove('food');
 };

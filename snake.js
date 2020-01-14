@@ -3,7 +3,7 @@ class Snake {
     this.positions = positions.slice();
     this.direction = direction;
     this.type = type;
-    this.previousTail = { x: 0, y: 0 };
+    this.previousTail = new Position(0,0);
   }
 
   get location() {
@@ -25,7 +25,7 @@ class Snake {
   get hasEatenItself() {
     const snakeHeadPosition = this.location[this.location.length - 1];
     const snakeBody = this.location.slice(0, -1);
-    return snakeBody.some(part => arePositionsEqual(snakeHeadPosition, part));
+    return snakeBody.some(part => snakeHeadPosition.isEqualTo(part));
   }
 
   turnLeft() {
@@ -45,12 +45,12 @@ class Snake {
   }
 
   move() {
-    const { x, y } = this.positions[this.positions.length - 1];
+    const headPosition = this.positions[this.positions.length - 1];
     this.previousTail = this.positions.shift();
 
-    const { deltaX, deltaY } = this.direction.delta;
-
-    this.positions.push({ x: x + deltaX, y: y + deltaY });
+    const delta = this.direction.delta;
+    const nextPosition = headPosition.add(delta);
+    this.positions.push(nextPosition);
   }
 
   grow() {

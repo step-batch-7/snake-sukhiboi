@@ -21,7 +21,8 @@
 --DONE-- * Seprated classes in their own files
 --DONE-- * Upon eating the food, snake should grow tall
 --DONE-- * Remove Ghost Snake
-* If snake touches itself or the walls, the game should be over
+--DONE-- * If snake touches itself or the walls, the game should be over
 * Add a scoring mechanism
-* Position Class
+--DONE-- * Position Class
 * Make snake with length and initial Position
+* Add sanke head property

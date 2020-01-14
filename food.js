@@ -4,9 +4,6 @@ class Food {
   }
 
   get position() {
-    return {
-      x: this.location.x,
-      y: this.location.y
-    };
+    return new Position(this.location.x, this.location.y);
   }
 }

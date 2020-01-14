@@ -7,16 +7,12 @@ const gameLoop = function(game) {
 
 const main = function() {
   const snake = new Snake(
-    [
-      { x: 40, y: 25 },
-      { x: 41, y: 25 },
-      { x: 42, y: 25 }
-    ],
+    [new Position(40, 25), new Position(41, 25), new Position(42, 25)],
     new Direction(EAST),
     'snake'
   );
 
-  const food = new Food(getRandomPosition());
+  const food = new Food(Position.randomPosition());
   const game = new Game(snake, food);
 
   attachEventListeners(snake);
