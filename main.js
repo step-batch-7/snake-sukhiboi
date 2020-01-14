@@ -3,6 +3,7 @@ const gameLoop = function(game) {
   eraseFood(gameStatus.previousFoodLocation);
   drawSnake(gameStatus.snakeStatus);
   drawFood(gameStatus.foodLocation);
+  drawScore(game.status.points)
 };
 
 const getSnakePositions = function(tailPosition, length) {
@@ -21,7 +22,8 @@ const main = function() {
   );
 
   const food = new Food(Position.randomPosition());
-  const game = new Game(snake, food);
+  const score = new Score(0);
+  const game = new Game(snake, food, score);
 
   attachEventListeners(snake);
   createGrids();

@@ -22,7 +22,9 @@
 --DONE-- * Upon eating the food, snake should grow tall
 --DONE-- * Remove Ghost Snake
 --DONE-- * If snake touches itself or the walls, the game should be over
-* Add a scoring mechanism
+--DONE-- * Add a scoring mechanism
 --DONE-- * Position Class
 --DONE-- * Make snake with length and initial Position
 --DONE-- * Add sanke head property
+* Add gameOver screem
+* STyle Game

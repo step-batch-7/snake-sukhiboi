@@ -1,7 +1,8 @@
 class Game {
-  constructor(snake, food) {
+  constructor(snake, food, score) {
     this.snake = snake;
     this.food = food;
+    this.score = score;
     this.previousFood = new Food(new Position(0, 0));
     this.gameOver = false;
   }
@@ -10,7 +11,8 @@ class Game {
     return {
       snakeStatus: this.snake.status,
       previousFoodLocation: this.previousFood.location,
-      foodLocation: this.food.location
+      foodLocation: this.food.location,
+      points: this.score.points
     };
   }
 
@@ -42,6 +44,7 @@ class Game {
       this.previousFood = this.food;
       this.food = new Food(Position.randomPosition());
       this.snake.grow();
+      this.score.incrementBy(10);
     }
   }
 }

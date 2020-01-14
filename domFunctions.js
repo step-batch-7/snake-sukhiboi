@@ -67,3 +67,8 @@ const eraseFood = function(foodLocation) {
   const cell = getCell(foodLocation.coords);
   cell.classList.remove('food');
 };
+
+const drawScore = function (points) {
+  const scoreBoard = document.getElementById('scoreboard');
+  scoreBoard.innerText = `Score: ${points}`;
+};
