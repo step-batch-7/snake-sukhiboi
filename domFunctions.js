@@ -6,7 +6,8 @@ const GRID_ID = 'grid';
 const getGrid = () => document.getElementById(GRID_ID);
 const getCellId = (x, y) => x + '_' + y;
 
-const getCell = (coords) => document.getElementById(getCellId(coords.x, coords.y));
+const getCell = coords =>
+  document.getElementById(getCellId(coords.x, coords.y));
 
 const createCell = function(grid, x, y) {
   const cell = document.createElement('div');
@@ -31,7 +32,7 @@ const eraseTail = function(tail, species) {
 
 const drawSnake = function(snakeStatus) {
   eraseTail(snakeStatus.previousTail, snakeStatus.species);
-  snakeStatus.location.forEach((position) => {
+  snakeStatus.location.forEach(position => {
     const cell = getCell(position.coords);
     cell.classList.add(snakeStatus.species);
   });
@@ -68,7 +69,19 @@ const eraseFood = function(foodLocation) {
   cell.classList.remove('food');
 };
 
-const drawScore = function (points) {
+const drawScore = function(points) {
   const scoreBoard = document.getElementById('scoreboard');
   scoreBoard.innerText = `Score: ${points}`;
+};
+
+const drawGameOverScreen = function(points) {
+  const gameScreen = document.getElementById('gameScreen');
+  const scoreBoard = document.getElementById('scoreboard');
+  const grid = getGrid();
+  scoreBoard.remove();
+  grid.remove();
+  const gameOverScreen = document.createElement('div');
+  gameOverScreen.classList.add('gameOver')
+  gameOverScreen.innerText = `GAME OVER \n Your final score is ${points} points`;
+  gameScreen.appendChild(gameOverScreen);
 };

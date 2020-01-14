@@ -34,6 +34,7 @@ const main = function() {
     game.update();
     if (game.over) {
       clearInterval(gameInterval);
+      drawGameOverScreen(game.status.points);
     } else {
       gameLoop(game);
     }
