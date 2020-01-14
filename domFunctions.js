@@ -85,6 +85,6 @@ const drawGameOverScreen = function(points) {
   grid.remove();
   const gameOverScreen = document.createElement('div');
   gameOverScreen.classList.add('gameOver')
-  gameOverScreen.innerText = `GAME OVER \n Your final score is ${points} points`;
+  gameOverScreen.innerText = `GAME OVER \n Your final score is ${points}`;
   gameScreen.appendChild(gameOverScreen);
 };
