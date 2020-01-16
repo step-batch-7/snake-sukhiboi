@@ -81,6 +81,12 @@ h1 {
   border-radius: 50%;
 }
 
+.superFood {
+  animation: spotty 3s infinite;
+  background-color: red;
+  border-radius: 50%;
+}
+
 .gameOver {
   text-align: center;
   font-size: 28px;

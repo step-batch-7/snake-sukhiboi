@@ -4,20 +4,22 @@ class Game {
   #score;
   #previousFood;
   #gameOver;
+  #foodCount;
 
   constructor(snake, food, score) {
     this.#snake = snake;
     this.#food = food;
     this.#score = score;
-    this.#previousFood = new Food(new Position(0, 0), 10);
+    this.#previousFood = new Food(new Position(0, 0), 10, 'food');
     this.#gameOver = false;
+    this.#foodCount = 0;
   }
 
   get status() {
     return {
       snakeStatus: this.#snake.status,
-      previousFoodLocation: this.#previousFood.position,
-      foodLocation: this.#food.position,
+      previousFood: this.#previousFood.status,
+      food: this.#food.status,
       points: this.#score.points
     };
   }
@@ -43,11 +45,17 @@ class Game {
 
   update() {
     this.#snake.move();
-    if (this.#snake.headLocation.isEqualTo(this.#food.position)) {
+    const foodPosition = this.#food.status.position;
+    if (this.#snake.headLocation.isEqualTo(foodPosition)) {
       this.#previousFood = this.#food;
-      this.#food = new Food(Position.randomPosition(), 10);
+      this.#food = new Food(Position.randomPosition(), 10, 'food');
       this.#snake.grow();
-      this.#score.incrementBy(this.#previousFood.points);
+      this.#score.incrementBy(this.#previousFood.status.points);
+      this.#foodCount++;
+    }
+    if (this.#foodCount >= 5) {
+      this.#food = new Food(Position.randomPosition(), 20, 'superFood');
+      this.#foodCount = 0;
     }
   }
 }

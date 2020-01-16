@@ -66,14 +66,14 @@ const getPausePlayBtn = function() {
   return document.getElementById('plauseplay');
 };
 
-const drawFood = function(foodLocation) {
+const drawFood = function(foodLocation, type) {
   const cell = getCell(foodLocation.coords);
-  cell.classList.add('food');
+  cell.classList.add(type);
 };
 
-const eraseFood = function(foodLocation) {
+const eraseFood = function(foodLocation, type) {
   const cell = getCell(foodLocation.coords);
-  cell.classList.remove('food');
+  cell.classList.remove(type);
 };
 
 const drawScore = function(points) {

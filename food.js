@@ -1,18 +1,19 @@
 class Food {
-
   #location;
   #value;
+  #category;
 
-  constructor(location, value) {
+  constructor(location, value, category) {
     this.#location = location;
     this.#value = value;
+    this.#category = category;
   }
 
-  get points() {
-    return this.#value;
-  }
-
-  get position() {
-    return new Position(this.#location.coords.x, this.#location.coords.y);
+  get status() {
+    return {
+      points: this.#value,
+      type: this.#category,
+      position: new Position(this.#location.coords.x, this.#location.coords.y)
+    };
   }
 }
