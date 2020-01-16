@@ -1,18 +1,24 @@
 class Game {
+  #snake;
+  #food;
+  #score;
+  #previousFood;
+  #gameOver;
+
   constructor(snake, food, score) {
-    this.snake = snake;
-    this.food = food;
-    this.score = score;
-    this.previousFood = new Food(new Position(0, 0), 10);
-    this.gameOver = false;
+    this.#snake = snake;
+    this.#food = food;
+    this.#score = score;
+    this.#previousFood = new Food(new Position(0, 0), 10);
+    this.#gameOver = false;
   }
 
   get status() {
     return {
-      snakeStatus: this.snake.status,
-      previousFoodLocation: this.previousFood.location,
-      foodLocation: this.food.location,
-      points: this.score.points
+      snakeStatus: this.#snake.status,
+      previousFoodLocation: this.#previousFood.position,
+      foodLocation: this.#food.position,
+      points: this.#score.points
     };
   }
 
@@ -27,21 +33,21 @@ class Game {
     };
 
     if (
-      this.snake.hasEatenItself ||
-      snakeTouchesBoundary(this.snake.headLocation)
+      this.#snake.hasEatenItself ||
+      snakeTouchesBoundary(this.#snake.headLocation)
     ) {
-      this.gameOver = true;
+      this.#gameOver = true;
     }
-    return this.gameOver;
+    return this.#gameOver;
   }
 
   update() {
-    this.snake.move();
-    if (this.snake.headLocation.isEqualTo(this.food.position)) {
-      this.previousFood = this.food;
-      this.food = new Food(Position.randomPosition(), 10);
-      this.snake.grow();
-      this.score.incrementBy(this.previousFood.points);
+    this.#snake.move();
+    if (this.#snake.headLocation.isEqualTo(this.#food.position)) {
+      this.#previousFood = this.#food;
+      this.#food = new Food(Position.randomPosition(), 10);
+      this.#snake.grow();
+      this.#score.incrementBy(this.#previousFood.points);
     }
   }
 }

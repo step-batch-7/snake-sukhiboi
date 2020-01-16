@@ -3,6 +3,7 @@ const gameLoop = function(game) {
   eraseFood(gameStatus.previousFoodLocation);
   drawSnake(gameStatus.snakeStatus);
   drawFood(gameStatus.foodLocation);
+  console.log(gameStatus.foodLocation);
   drawScore(game.status.points);
 };
 

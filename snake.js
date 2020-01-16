@@ -1,17 +1,22 @@
 class Snake {
+  #positions;
+  #direction;
+  #type;
+  #previousTail;
+
   constructor(positions, direction, type) {
-    this.positions = positions.slice();
-    this.direction = direction;
-    this.type = type;
-    this.previousTail = new Position(0, 0);
+    this.#positions = positions.slice();
+    this.#direction = direction;
+    this.#type = type;
+    this.#previousTail = new Position(0, 0);
   }
 
   get location() {
-    return this.positions.slice();
+    return this.#positions.slice();
   }
 
   get species() {
-    return this.type;
+    return this.#type;
   }
 
   get status() {
@@ -19,7 +24,7 @@ class Snake {
       headLocation: this.headLocation,
       location: this.location,
       species: this.species,
-      previousTail: this.previousTail
+      previousTail: this.#previousTail
     };
   }
 
@@ -34,31 +39,31 @@ class Snake {
   }
 
   turnLeft() {
-    this.direction.turnLeft();
+    this.#direction.turnLeft();
   }
 
   turnRight() {
-    this.direction.turnRight();
+    this.#direction.turnRight();
   }
 
   turnUp() {
-    this.direction.turnUp();
+    this.#direction.turnUp();
   }
 
   turnDown() {
-    this.direction.turnDown();
+    this.#direction.turnDown();
   }
 
   move() {
-    const headPosition = this.positions[this.positions.length - 1];
-    this.previousTail = this.positions.shift();
+    const headPosition = this.#positions[this.#positions.length - 1];
+    this.#previousTail = this.#positions.shift();
 
-    const delta = this.direction.delta;
+    const delta = this.#direction.delta;
     const nextPosition = headPosition.add(delta);
-    this.positions.push(nextPosition);
+    this.#positions.push(nextPosition);
   }
 
   grow() {
-    this.positions.unshift(this.previousTail);
+    this.#positions.unshift(this.#previousTail);
   }
 }

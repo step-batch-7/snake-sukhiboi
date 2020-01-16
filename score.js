@@ -1,13 +1,16 @@
 class Score {
+
+  #score;
+
   constructor(score) {
-    this.score = score;
+    this.#score = score;
   }
 
   get points() {
-    return this.score;
+    return this.#score;
   }
 
   incrementBy(points) {
-    this.score += points;
+    this.#score += points;
   }
 }

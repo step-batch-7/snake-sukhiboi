@@ -1,26 +1,30 @@
 class Position {
+  #x;
+  #y;
+
   constructor(x, y) {
-    this.x = x;
-    this.y = y;
+    this.#x = x;
+    this.#y = y;
   }
 
   get coords() {
     return {
-      x: this.x,
-      y: this.y
+      x: this.#x,
+      y: this.#y
     };
   }
 
   add(position) {
-    return new Position(this.x + position.coords.x, this.y + position.coords.y);
+    const { x, y } = position.coords;
+    return new Position(this.#x + x, this.#y + y);
   }
 
   liesBetween(position1, position2) {
     return (
-      this.x >= position1.coords.x &&
-      this.y >= position1.coords.y &&
-      this.x <= position2.coords.x &&
-      this.y <= position2.coords.y
+      this.#x >= position1.coords.x &&
+      this.#y >= position1.coords.y &&
+      this.#x <= position2.coords.x &&
+      this.#y <= position2.coords.y
     );
   }
 
@@ -31,6 +35,7 @@ class Position {
   }
 
   isEqualTo(position) {
-    return this.x == position.x && this.y == position.y;
+    const { x, y } = position.coords;
+    return this.#x == x && this.#y == y;
   }
 }
