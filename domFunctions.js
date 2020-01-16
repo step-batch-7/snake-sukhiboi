@@ -62,6 +62,10 @@ const attachEventListeners = snake => {
   document.body.onkeydown = handleKeyPress.bind(null, snake);
 };
 
+const getPausePlayBtn = function () {
+  return document.getElementById('plauseplay');
+}
+
 const drawFood = function(foodLocation) {
   const cell = getCell(foodLocation.coords);
   cell.classList.add('food');
