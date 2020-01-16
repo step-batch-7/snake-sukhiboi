@@ -62,9 +62,9 @@ const attachEventListeners = snake => {
   document.body.onkeydown = handleKeyPress.bind(null, snake);
 };
 
-const getPausePlayBtn = function () {
+const getPausePlayBtn = function() {
   return document.getElementById('plauseplay');
-}
+};
 
 const drawFood = function(foodLocation) {
   const cell = getCell(foodLocation.coords);
@@ -84,9 +84,11 @@ const drawScore = function(points) {
 const drawGameOverScreen = function(points) {
   const gameScreen = document.getElementById('gameScreen');
   const scoreBoard = document.getElementById('scoreboard');
+  const pausePlayBtn = getPausePlayBtn();
   const grid = getGrid();
   scoreBoard.remove();
   grid.remove();
+  pausePlayBtn.remove();
   const gameOverScreen = document.createElement('div');
   gameOverScreen.classList.add('gameOver');
   gameOverScreen.innerText = `GAME OVER \n Your final score is ${points}`;

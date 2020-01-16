@@ -17,18 +17,6 @@ const getSnakePositions = function(tailPosition, length) {
   return snakePositions.slice();
 };
 
-const createGameInterval = function(game) {
-  return setInterval(() => {
-    game.update();
-    if (game.over) {
-      clearInterval(gameInterval);
-      drawGameOverScreen(game.status.points);
-    } else {
-      gameLoop(game);
-    }
-  }, 100);
-};
-
 const main = function() {
   const snake = new Snake(
     getSnakePositions(new Position(40, 25), 4),
@@ -42,6 +30,18 @@ const main = function() {
 
   attachEventListeners(snake);
   createGrids();
+
+  const createGameInterval = function(game) {
+    return setInterval(() => {
+      game.update();
+      if (game.over) {
+        clearInterval(gameInterval);
+        drawGameOverScreen(game.status.points);
+      } else {
+        gameLoop(game);
+      }
+    }, 100);
+  };
 
   gameLoop(game);
 
